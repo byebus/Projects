@@ -2,12 +2,12 @@ package com.byebus.demo.dao;
 
 import java.util.List;
 
-import com.byebus.demo.model.data;
+import com.byebus.demo.model.Employee;
 
 public interface IdataDAO {
-    public List<data> getList();
-    public data getById(Integer dataId);
-    public String save(data data);
-    public String update(data data);
-    public String delete(Integer dataId);
+    public List<Employee> getList();
+    public Employee getById(Integer user_id);
+    public String save(Employee employee);
+    public String update(Employee employee);
+    public String delete(Integer user_id);
 }

@@ -14,34 +14,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.byebus.demo.dao.IdataDAO;
-import com.byebus.demo.model.data;
+import com.byebus.demo.model.Employee;
 
 @RestController
-@RequestMapping(value="/data")
+@RequestMapping(value="/Employee")
 public class dataController {
     @Autowired
     IdataDAO dataDAO;
 
     @GetMapping(value = "/list")
-    public List<data> getList() {
+    public List<Employee> getList() {
 
          return dataDAO.getList();
     }
 
     @GetMapping(value = "/get/{id}")
-    public data getById(@PathVariable(value = "id") int empId) {
+    public Employee getById(@PathVariable(value = "id") int empId) {
 
          return dataDAO.getById(empId);
     }
 
     @PostMapping(value = "/save")
-    public String save(@Validated @RequestBody data data) {
+    public String save(@Validated @RequestBody Employee data) {
 
          return dataDAO.save(data);
     }
 
     @PutMapping(value = "/update")
-    public String update(@Validated @RequestBody data data) {
+    public String update(@Validated @RequestBody Employee data) {
 
          return dataDAO.update(data);
     }
