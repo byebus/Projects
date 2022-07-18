@@ -47,21 +47,23 @@ public class DataDAO implements IdataDAO {
     }
 
     @Override
-    public String update(Employee data) {
+    public String update(Employee employee) {
         ((JdbcOperations) jdbcTemplate).update(
             "UPDATE users "
-            +"SET emp_name = ?,designation = ?,address = ?,phone_no = ? "
-            +"WHERE emp_id = ?",
-            new Object[] {data.getUser_name(),
-                data.getUser_surname(),data.getEmail(),
-                data.getPhoneNo(),data.getUser_id()});
+            +"SET user_name = ?,user_surname = ?,email = ?,phone_no = ? "
+            +"WHERE user_id = ?",
+            new Object[] {employee.getUser_name(),
+                employee.getUser_surname(),employee.getEmail(),
+                employee.getPhoneNo(),employee.getUser_id()});
         return "Updated";
     }
 
     @Override
     public String delete(Integer dataId) {
-        // TODO Auto-generated method stub
-        return null;
+        jdbcTemplate.update(
+            "DELETE FROM users WHERE user_id = ?",
+            new Object[] {dataId});
+        return "Deleted";
     }
 
     }
