@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jndi.JndiTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.byebus.demo.model.Employee;
 @Repository
 public class DataDAO implements IdataDAO {
