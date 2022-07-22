@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.byebus.demo.dao.IdataDAO;
 import com.byebus.demo.model.Employee;
+import com.byebus.demo.model.Issue;
 
 @RestController
 @RequestMapping(value="/Employee")
@@ -32,6 +33,11 @@ public class dataController {
     public Employee getById(@PathVariable(value = "id") int empId) {
 
          return dataDAO.getById(empId);
+    }
+    @GetMapping(value = "/{id}/issues")
+    public  List<Issue> getUserIssuesById(@PathVariable(value = "id") int empId) {
+
+         return dataDAO.getUserIssuesById(empId);
     }
 
     @PostMapping(value = "/save")

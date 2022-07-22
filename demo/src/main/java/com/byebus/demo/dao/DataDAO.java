@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.byebus.demo.model.Employee;
+import com.byebus.demo.model.Issue;
 @Repository
 public class DataDAO implements IdataDAO {
 
@@ -30,6 +31,15 @@ public class DataDAO implements IdataDAO {
             +"FROM users "
             +"WHERE user_id = ?",
             new Object[] {empId},new BeanPropertyRowMapper<>(Employee.class));
+    }
+    @Deprecated
+    public List<Issue>  getUserIssuesById(Integer empId) {
+         return ((JdbcOperations) jdbcTemplate).query(
+            "Select"+" issues.* "+
+           "from issues "+
+            "join users_issues on issues.issue_id=users_issues.issues_id "+
+            "where users_issues.user_id=? ",
+            new Object[] {empId},new BeanPropertyRowMapper<>(Issue.class));
     }
 
     @Override
